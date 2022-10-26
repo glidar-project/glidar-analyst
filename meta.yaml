@@ -1,0 +1,45 @@
+package: 
+  name: glidar-analyst
+  version: "0.1.0"
+
+source:
+  path: ./
+
+build:
+  number: 1
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - matplotlib
+    - numpy
+    - scipy
+    - xarray
+    - netCDF4
+    - pandas
+    - metpy
+    - pyproj
+    - pyopengl
+    - tqdm
+ #  - python 3.7
+ #  - matplotlib 3.1.1
+ #  - numpy 1.18.1
+ #  - scipy 1.3.2
+ #  - xarray 0.16.1
+ #  - pandas 1.1.4
+ #  - metpy 1.
+ #  - pyproj 1.9.6
+ #  - pyopengl 3.1.5
+ #  - tqdm 4.42.0
+
+# test:
+#   imports:
+#     -
+
+about:
+  home: https://glidar-project.github.io/
