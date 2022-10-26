@@ -1198,8 +1198,8 @@ class PramMapping(QtWidgets.QWidget):
         self.plot_model(*t.result)
         self.controls.set_params(t.params)
 
-    def resizeEvent(self, event):
-        print('resize event happening', event.size())
+    # def resizeEvent(self, event):
+    #     print('resize event happening', event.size())
 
     def simple_params(self, w_max, z_c, z_max):
 

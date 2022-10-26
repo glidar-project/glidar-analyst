@@ -61,17 +61,22 @@ class MainWindow(QtWidgets.QMainWindow):
             '../data/2022-Voss_imet_soundings.nc')
         # filename = ResourceManager().get_absolute_path(
         #     '../data/Voss-2018-04-29/sounding/' + 'sola_20180331-20180430.nc')
-        self.sounding_loaded(
-            (nc.Dataset(filename), xr.open_dataset(filename).to_dataframe()))
 
-        self.data_loaded(
-            pd.read_csv(ResourceManager().get_absolute_path(
-                '../data/Voss_iMet_thermals/20220516-234233-00044494_thermals.csv'),
-                        parse_dates=['time']))
-        self.data_loaded(
-            pd.read_csv(ResourceManager().get_absolute_path(
-                '../data/Voss_iMet_thermals/20220517-184531-00044494_thermals.csv'),
-                        parse_dates=['time']))
+        try:
+            self.sounding_loaded(
+                (nc.Dataset(filename), xr.open_dataset(filename).to_dataframe()))
+            
+            self.data_loaded(
+                pd.read_csv(ResourceManager().get_absolute_path(
+                    '../data/Voss_iMet_thermals/20220516-234233-00044494_thermals.csv'),
+                            parse_dates=['time']))
+            self.data_loaded(
+                pd.read_csv(ResourceManager().get_absolute_path(
+                    '../data/Voss_iMet_thermals/20220517-184531-00044494_thermals.csv'),
+                            parse_dates=['time']))
+        except FileNotFoundError as e:
+            print('Data not found. Download the data from https://github.com/glidar-project/glidar-analyst/releases/download/0.1.0/data.zip and put them in the root folder.')
+
         # self.data_loaded(pd.read_csv(ResourceManager().get_absolute_path('../data/Voss-vol2/clusters.csv'), parse_dates=['time']))
         # self.data_loaded(pd.read_csv('../data/OLC/olc_thermals.csv', parse_dates=['time']))
         # self.data_loaded(pd.read_csv('olc_frame.csv', parse_dates=['time']))

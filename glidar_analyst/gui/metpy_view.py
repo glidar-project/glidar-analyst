@@ -207,7 +207,7 @@ class MetpyView(QtWidgets.QWidget):
         self.repaint()
 
     def resizeEvent(self, event):
-        print('resize event happening', event.size())
+        # print('resize event happening', event.size())
 
         self.skew.ax.set_aspect(150 * event.size().height() /
                                 event.size().width())
