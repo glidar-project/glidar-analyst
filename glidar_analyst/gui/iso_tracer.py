@@ -18,6 +18,8 @@ from glidar_analyst.model.simple_model import QuadraticModel
 from glidar_analyst.gui.model_controls_widget import RealModelControlsWidget
 from glidar_analyst.util.resource_manager import ResourceManager
 
+from glidar_analyst.util.decorators import my_timer
+
 matplotlib.use('Qt5Agg')
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -966,6 +968,7 @@ class IsoTracer(QtWidgets.QWidget):
             self.notify_plots_to_hover(ids)
             self.param_points_hovered.emit(ids)
 
+    @my_timer
     def update_plots(self):
 
         if self.big_plot:
@@ -981,13 +984,9 @@ class IsoTracer(QtWidgets.QWidget):
 
         self.param_table_data.add_entry(tracer_obj)
         
-        t = time.process_time_ns()
         self.param_table.repaint()
-        print(f'Param table repainted in {(time.process_time_ns() - t) * 1e-6:.1f} ms')
 
-        t = time.process_time_ns()
         self.update_plots()
-        print(f'Param plots repainted in {(time.process_time_ns() - t) * 1e-6:.1f} ms')
 
         # self.param_table.selectRow(tracer_obj.id)
         # self.selection_color_mapper = SelectionColorMapper([tracer_obj.id], [tracer_obj.id])

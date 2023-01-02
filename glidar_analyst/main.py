@@ -5,7 +5,7 @@ from PyQt5.QtCore import QThreadPool
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QAction, QFileDialog, QDockWidget, QApplication
 
-# from isotrotter.gui.thermal_3d_view import Thermal3DView
+# from glidar_analyst.gui.thermal_3d_view import Thermal3DView
 from glidar_analyst.para.data_loader import load_and_segment
 from glidar_analyst.gui.model_fitting_widget import ModelFittingWidget
 from glidar_analyst.util.resource_manager import ResourceManager

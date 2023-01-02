@@ -400,7 +400,7 @@ class ThermalModel:
         t_bar = self.calc_temperature_profile(mp.surface_temperature,
                                               mp.dew_point_temperature)
         if use_sounding:
-            idx = np.where(t_bar < tmp)[0]
+            idx = np.where((t_bar < tmp) & (self.altitude.magnitude > mp.thermal_altitude))[0]
             if idx.size > 0:
                 idx = idx[0]
                 t_bar = Utils.combine_pint_arrays(t_bar, tmp, idx)
