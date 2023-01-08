@@ -822,7 +822,7 @@ class IsoTracer(QtWidgets.QWidget):
 
     def keyPressEvent(self, event: QtGui.QKeyEvent) -> None:
 
-        if event.key() in [QtCore.Qt.Key_Delete]:
+        if event.key() in [QtCore.Qt.Key_Delete, QtCore.Qt.Key_Backspace]:
             print('Pressing key:', event.key() )
 
             selected = self.param_table.selectionModel().selectedRows()
